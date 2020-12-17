@@ -9,6 +9,7 @@ return array(
     'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
     'Phone_Book\\Classes\\Base' => $baseDir . '/includes/classes/Base.php',
     'Phone_Book\\Classes\\Contacts' => $baseDir . '/includes/classes/Contacts.php',
+    'Phone_Book\\Classes\\Database' => $baseDir . '/includes/classes/Database.php',
     'Phone_Book\\Classes\\Main' => $baseDir . '/includes/classes/Main.php',
     'Phone_Book\\Classes\\Settings' => $baseDir . '/includes/classes/Settings.php',
 );

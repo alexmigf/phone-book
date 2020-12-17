@@ -24,6 +24,7 @@ class ComposerStaticInitc0b1b113bb17e9b37346aee165b91e95
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
         'Phone_Book\\Classes\\Base' => __DIR__ . '/../..' . '/includes/classes/Base.php',
         'Phone_Book\\Classes\\Contacts' => __DIR__ . '/../..' . '/includes/classes/Contacts.php',
+        'Phone_Book\\Classes\\Database' => __DIR__ . '/../..' . '/includes/classes/Database.php',
         'Phone_Book\\Classes\\Main' => __DIR__ . '/../..' . '/includes/classes/Main.php',
         'Phone_Book\\Classes\\Settings' => __DIR__ . '/../..' . '/includes/classes/Settings.php',
     );
