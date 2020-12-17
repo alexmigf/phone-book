@@ -1,0 +1,12 @@
+{
+	"autoload": {
+		"psr-4": {
+			"Phone_Book\\": [
+				"includes/"
+			]
+		},
+		"classmap": [
+			"includes/"
+		]
+	}
+}
