@@ -4,27 +4,54 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitc0b1b113bb17e9b37346aee165b91e95
+class ComposerStaticInit2066f9457193a3e08ca7b2ab7addc50c
 {
     public static $prefixLengthsPsr4 = array (
+        'm' => 
+        array (
+            'megastruktur\\' => 13,
+        ),
         'P' => 
         array (
             'Phone_Book\\' => 11,
         ),
+        'E' => 
+        array (
+            'Eighteen73\\SettingsApi\\' => 23,
+        ),
+        'A' => 
+        array (
+            'Alexmigf\\' => 9,
+        ),
     );
 
     public static $prefixDirsPsr4 = array (
+        'megastruktur\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/megastruktur/phone-country-codes/src',
+        ),
         'Phone_Book\\' => 
         array (
             0 => __DIR__ . '/../..' . '/includes',
+        ),
+        'Eighteen73\\SettingsApi\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/eighteen73/settings-api/includes/classes',
+        ),
+        'Alexmigf\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/alexmigf/forma/src',
         ),
     );
 
     public static $classMap = array (
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
-        'Phone_Book\\Classes\\Base' => __DIR__ . '/../..' . '/includes/classes/Base.php',
+        'Phone_Book\\Classes\\Contact' => __DIR__ . '/../..' . '/includes/classes/Contact.php',
         'Phone_Book\\Classes\\Contacts' => __DIR__ . '/../..' . '/includes/classes/Contacts.php',
+        'Phone_Book\\Classes\\ContactsList' => __DIR__ . '/../..' . '/includes/classes/ContactsList.php',
+        'Phone_Book\\Classes\\CountryCodes' => __DIR__ . '/../..' . '/includes/classes/CountryCodes.php',
         'Phone_Book\\Classes\\Database' => __DIR__ . '/../..' . '/includes/classes/Database.php',
+        'Phone_Book\\Classes\\Logger' => __DIR__ . '/../..' . '/includes/classes/Logger.php',
         'Phone_Book\\Classes\\Main' => __DIR__ . '/../..' . '/includes/classes/Main.php',
         'Phone_Book\\Classes\\Settings' => __DIR__ . '/../..' . '/includes/classes/Settings.php',
     );
@@ -32,9 +59,9 @@ class ComposerStaticInitc0b1b113bb17e9b37346aee165b91e95
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInitc0b1b113bb17e9b37346aee165b91e95::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitc0b1b113bb17e9b37346aee165b91e95::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInitc0b1b113bb17e9b37346aee165b91e95::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit2066f9457193a3e08ca7b2ab7addc50c::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit2066f9457193a3e08ca7b2ab7addc50c::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit2066f9457193a3e08ca7b2ab7addc50c::$classMap;
 
         }, null, ClassLoader::class);
     }

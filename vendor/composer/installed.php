@@ -1,24 +1,52 @@
-<?php return array (
-  'root' => 
-  array (
-    'pretty_version' => '1.0.0+no-version-set',
-    'version' => '1.0.0.0',
-    'aliases' => 
-    array (
+<?php return array(
+    'root' => array(
+        'pretty_version' => 'dev-master',
+        'version' => 'dev-master',
+        'type' => 'library',
+        'install_path' => __DIR__ . '/../../',
+        'aliases' => array(),
+        'reference' => 'f55e438bae6b286329b81749b52d12d46d47f685',
+        'name' => '__root__',
+        'dev' => true,
     ),
-    'reference' => NULL,
-    'name' => 'alexmigf/phone-book',
-  ),
-  'versions' => 
-  array (
-    'alexmigf/phone-book' => 
-    array (
-      'pretty_version' => '1.0.0+no-version-set',
-      'version' => '1.0.0.0',
-      'aliases' => 
-      array (
-      ),
-      'reference' => NULL,
+    'versions' => array(
+        '__root__' => array(
+            'pretty_version' => 'dev-master',
+            'version' => 'dev-master',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../../',
+            'aliases' => array(),
+            'reference' => 'f55e438bae6b286329b81749b52d12d46d47f685',
+            'dev_requirement' => false,
+        ),
+        'alexmigf/forma' => array(
+            'pretty_version' => '0.01',
+            'version' => '0.01.0.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../alexmigf/forma',
+            'aliases' => array(),
+            'reference' => 'b31fdad96b79e4ec842c5d0b17fcb283fa416c0a',
+            'dev_requirement' => false,
+        ),
+        'eighteen73/settings-api' => array(
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../eighteen73/settings-api',
+            'aliases' => array(
+                0 => '9999999-dev',
+            ),
+            'reference' => '33ac55998ec8928f661a293e7da40183710f149d',
+            'dev_requirement' => false,
+        ),
+        'megastruktur/phone-country-codes' => array(
+            'pretty_version' => '0.4',
+            'version' => '0.4.0.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../megastruktur/phone-country-codes',
+            'aliases' => array(),
+            'reference' => '9d396143a73b08c0109053cf0c1cccdf8f78cfc1',
+            'dev_requirement' => false,
+        ),
     ),
-  ),
 );

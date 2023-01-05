@@ -1,0 +1,27 @@
+{
+  "name": "alexmigf/forma",
+  "description": "WordPress Admin simple form API package",
+  "type": "library",
+  "license": "GPL-3.0-or-later",
+  "homepage": "https://github.com/alexmigf/forma",
+  "keywords": [
+    "form",
+    "api",
+    "wordpress"
+  ],
+  "authors": [
+    {
+      "name": "Alexandre Faustino",
+      "email": "alexmigf@gmail.com"
+    }
+  ],
+  "autoload": {
+      "psr-4": {
+          "Alexmigf\\": "src"
+      }
+  },
+  "minimum-stability": "stable",
+  "require": {
+    "php": ">=7.0"
+  }
+}

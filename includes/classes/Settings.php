@@ -9,44 +9,52 @@ namespace Phone_Book\Classes;
 
 defined( 'ABSPATH' ) || die();
 
-if( ! class_exists( '\\Phone_Book\\Classes\\Settings' ) ) {
+if ( ! class_exists( '\\Phone_Book\\Classes\\Settings' ) ) {
 
-	class Settings extends \Phone_Book\Classes\Base
-	{
+	class Settings {
 
-		protected function __construct()
-		{
-			add_action( 'admin_menu', array( $this, 'admin_menu_page' ) );
+		public $settings;
+		public $slug;
+		protected static $_instance = null;
+		
+		public static function instance() {
+			if ( is_null( self::$_instance ) ) {
+				self::$_instance = new self();
+			}
+			return self::$_instance;
 		}
 
-		public function admin_menu_page()
-		{			
-			add_submenu_page(
-				'phone-book',
-				__( 'Settings', 'phone-book' ),
-				__( 'Settings', 'phone-book' ),
-				'edit_posts',
-				'phone-book-settings',
-				array( $this, 'admin_menu_page_callback' ),
+		protected function __construct() {
+			$this->slug = Phone_Book()->slug.'_settings';
+			
+			Phone_Book()->settings_api->set_submenu(
+				__( 'Settings', Phone_Book()->slug ),
+				__( 'Settings', Phone_Book()->slug ),
+				$this->slug
 			);
-		}
-
-		public function admin_menu_page_callback()
-		{
-			$settings_tabs = apply_filters( 'phone_book_settings_tabs', array (
-				'Settings'	=> __('Settings', 'phone-book'),
-				'import'	=> __('Import', 'phone-book'),
-				'export'	=> __('Export', 'phone-book'),
-			));
-
-			$active_tab = isset( $_GET[ 'tab' ] ) ? $_GET[ 'tab' ] : 'settings';
-
-			// template
-			include_once( PHONE_BOOK_PLUGIN_TEMPLATES_DIR.'Settings.php' );
+			
+			Phone_Book()->settings_api->add_section(
+				[
+					'id'      => 'settings',
+					'title'   => __( 'Settings', Phone_Book()->slug ),
+					'submenu' => $this->slug,
+				]
+			);
+			
+			Phone_Book()->settings_api->add_field(
+				'settings',
+				[
+					'id'      => 'results_per_page',
+					'type'    => 'number',
+					'name'    => __( 'Results per page', Phone_Book()->slug ),
+					'desc'    => __( 'Number of list results per page.', Phone_Book()->slug ),
+					'default' => 10,
+				]
+			);
 		}
 
 	}
 
 }
 
-return \Phone_Book\Classes\Settings::instance();
+return Settings::instance();

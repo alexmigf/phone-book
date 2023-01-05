@@ -9,99 +9,108 @@ namespace Phone_Book\Classes;
 
 defined( 'ABSPATH' ) || die();
 
-if( ! class_exists( '\\Phone_Book\\Classes\\Contacts' ) ) {
+if ( ! class_exists( '\\Phone_Book\\Classes\\Contacts' ) ) {
 
-	class Contacts extends \Phone_Book\Classes\Base
-	{
-		protected $db_table_name;
-		protected $_data;
-		protected $database;
+	class Contacts {
 
-		protected function __construct( array $data = [] )
-		{
-			$this->_data			= $data;
-			$this->database			= \Phone_Book\Classes\Database::instance();
-			$this->db_table_name	= $this->database->prefix . str_replace( '-', '_', PHONE_BOOK_PLUGIN_SLUG . '-contacts' );
-
-			$this->db_table_create();
-
-			add_action( 'admin_menu', array( $this, 'admin_menu_page' ) );
-		}
-
-		public function admin_menu_page()
-		{			
-			add_submenu_page(
-				'phone-book',
-				__( 'Contacts', 'phone-book' ),
-				__( 'Contacts', 'phone-book' ),
-				'edit_posts',
-				'phone-book',
-				array( $this, 'admin_menu_page_callback' ),
-			);
-			
-			add_submenu_page(
-				'phone-book',
-				__( 'New contact', 'phone-book' ),
-				__( 'New contact', 'phone-book' ),
-				'edit_posts',
-				'phone-book-new-contact',
-				array( $this, 'admin_menu_page_callback' ),
-			);
-		}
-
-		public function admin_menu_page_callback()
-		{
-			
-		}
-
-		private function db_table_exists()
-		{
-			if ( $this->database->wpdb->get_var( $this->database->wpdb->prepare( "SHOW TABLES LIKE %s", $this->db_table_name ) ) !== $this->db_table_name ) {
-				return false;
-			} else {
-				return true;
+		public           $slug      = 'contacts';
+		public           $database;
+		public           $contact;
+		protected static $_instance = null;
+		
+		public static function instance() {
+			if ( is_null( self::$_instance ) ) {
+				self::$_instance = new self();
 			}
+			return self::$_instance;
 		}
 
-		private function db_table_create()
-		{
+		protected function __construct() {
+			$this->database = Database::instance();
+			$this->database->set_name( $this->slug );
+			$this->database->set_date_keys( [ 'date_created', 'date_modified', 'birthday' ] );
+
+			$this->create_db_table();
+
+			Phone_Book()->settings_api->set_submenu(
+				__( 'Contacts', Phone_Book()->slug ),
+				__( 'Contacts', Phone_Book()->slug ),
+				Phone_Book()->slug
+			);
+			
+			$this->contact = Contact::instance();
+			$this->contact->database = $this->database;
+		}
+
+		private function create_db_table() {
 			// if we have the table already finish here
-			if( $this->db_table_exists() ) return;
+			if ( $this->database->table_exists() ) {
+				return;
+			}
 
 			// attempt to create the table
-			$sql = "CREATE TABLE {$this->db_table_name} (";
+			$sql  = "CREATE TABLE {$this->database->table_name} (";
 			$sql .= "id bigint(20) NOT NULL AUTO_INCREMENT,";
+			$sql .= "date_created datetime DEFAULT '1000-01-01 00:00:00' NOT NULL,";
+			$sql .= "date_modified datetime DEFAULT '1000-01-01 00:00:00' NULL,";
 			$sql .=	"first_name varchar(200) NULL,";
 			$sql .=	"last_name varchar(200) NULL,";
 			$sql .=	"company varchar(200) NULL,";
 			$sql .=	"position varchar(200) NULL,";
 			$sql .=	"department varchar(200) NULL,";
 			$sql .=	"email varchar(200) NULL,";
-			$sql .=	"country_code smallint(5) NULL,";
-			$sql .=	"phone_number mediumint(9) NOT NULL,";
+			$sql .=	"country_code varchar(200) NULL,";
+			$sql .=	"phone_number varchar(200) NULL,";
 			$sql .=	"notes longtext NULL,";
-			$sql .=	"tag varchar(200) NULL,";
-			$sql .= "birthday datetime NULL,";
+			$sql .= "birthday datetime DEFAULT '1000-01-01 00:00:00' NULL,";
 			$sql .=	"website varchar(200) NULL,";
 			$sql .=	"PRIMARY KEY  (id)";
 			$sql .= ") {$this->database->charset};";
 
 			// result
 			require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
-			$result = dbDelta( $sql );
+			dbDelta( $sql );
 
-			// log errors
-			$logger = new \WC_Logger();
-			$context = array( 'source' => 'phone-book-dbdelta-log' );
-			if( $this->database->wpdb->last_error !== '' ) {
-				$logger->log( 'error', $this->database->wpdb->last_error, $context );
-			}
+			$this->database->catch_object_errors();
 
-			return $result;
+			return;
+		}
+
+		/**
+		 * Sync contacts with remote app
+		 * 
+		 * @param string $mode  can be 'send', 'receive' or 'both_ways'
+		 * 
+		 * @return void
+		 */
+		public function sync( $mode = 'both_ways' ) {
+
+		}
+
+		/**
+		 * Backup contacts
+		 * 
+		 * @param string $type  can be 'csv' or 'vcard'
+		 * 
+		 * @return void
+		 */
+		public function backup( $type ) {
+
+		}
+
+		/**
+		 * Import contacts
+		 * 
+		 * @param string $type  can be 'csv' or 'vcard'
+		 * 
+		 * @return void
+		 */
+		public function import( $type ) {
+
 		}
 
 	}
 
 }
 
-return \Phone_Book\Classes\Contacts::instance();
+return Contacts::instance();

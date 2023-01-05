@@ -6,5 +6,8 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'megastruktur\\' => array($vendorDir . '/megastruktur/phone-country-codes/src'),
     'Phone_Book\\' => array($baseDir . '/includes'),
+    'Eighteen73\\SettingsApi\\' => array($vendorDir . '/eighteen73/settings-api/includes/classes'),
+    'Alexmigf\\' => array($vendorDir . '/alexmigf/forma/src'),
 );

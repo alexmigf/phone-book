@@ -1,19 +1,17 @@
 <?php
 /**
  * Plugin Name:			Phone Book
- * Description:			A WordPress Phone Book
+ * Description:			A WordPress Phone Book plugin
  * Version:				1.0.0
  * Requires at least:	4.9
  * Requires PHP:		7.2
  * Author:				Alexandre Faustino
- * Author URI:			mailto:alexmigf@gmail.com
+ * Author URI:			https://alexmigf.dev
  * License:           	GPL v2 or later
  * License URI:       	https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain:			phone-book
  * Domain Path:			/languages
  */
-
-use Phone_Book\Classes\Main;
 
 defined( 'ABSPATH' ) || die();
 
@@ -31,8 +29,7 @@ define( 'PHONE_BOOK_PLUGIN_FULL_PATH', __FILE__ );
 require_once( PHONE_BOOK_PLUGIN_DIR . 'vendor/autoload.php' );
 
 // main instance
-function Phone_Book()
-{
-	return Main::instance();
+function Phone_Book() {
+	return \Phone_Book\Classes\Main::instance();
 }
 Phone_Book();
