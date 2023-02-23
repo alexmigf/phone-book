@@ -35,22 +35,26 @@ if ( ! class_exists( '\\Phone_Book\\Classes\\Settings' ) ) {
 			
 			Phone_Book()->settings_api->add_section(
 				[
-					'id'      => 'settings',
+					'id'      => Phone_Book()->slug.'-settings',
 					'title'   => __( 'Settings', Phone_Book()->slug ),
 					'submenu' => $this->slug,
 				]
 			);
 			
 			Phone_Book()->settings_api->add_field(
-				'settings',
+				Phone_Book()->slug.'-settings',
 				[
 					'id'      => 'results_per_page',
 					'type'    => 'number',
 					'name'    => __( 'Results per page', Phone_Book()->slug ),
 					'desc'    => __( 'Number of list results per page.', Phone_Book()->slug ),
-					'default' => 10,
+					'default' => 20,
 				]
 			);
+		}
+		
+		public function get_data() {
+			return get_option( Phone_Book()->slug.'-settings' );
 		}
 
 	}

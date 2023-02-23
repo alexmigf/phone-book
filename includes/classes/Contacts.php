@@ -76,39 +76,6 @@ if ( ! class_exists( '\\Phone_Book\\Classes\\Contacts' ) ) {
 			return;
 		}
 
-		/**
-		 * Sync contacts with remote app
-		 * 
-		 * @param string $mode  can be 'send', 'receive' or 'both_ways'
-		 * 
-		 * @return void
-		 */
-		public function sync( $mode = 'both_ways' ) {
-
-		}
-
-		/**
-		 * Backup contacts
-		 * 
-		 * @param string $type  can be 'csv' or 'vcard'
-		 * 
-		 * @return void
-		 */
-		public function backup( $type ) {
-
-		}
-
-		/**
-		 * Import contacts
-		 * 
-		 * @param string $type  can be 'csv' or 'vcard'
-		 * 
-		 * @return void
-		 */
-		public function import( $type ) {
-
-		}
-
 	}
 
 }

@@ -11,6 +11,6 @@
 }
 
 .phone-book_settings-wrap .phone-book-nav,
-.phone-book_settings-wrap #settings form > h2 {
+.phone-book_settings-wrap #phone-book-settings form > h2 {
 	display: none;
 }

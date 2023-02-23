@@ -20,6 +20,7 @@ define( 'PHONE_BOOK_VERSION', '1.0.0' );
 define( 'PHONE_BOOK_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 define( 'PHONE_BOOK_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'PHONE_BOOK_PLUGIN_TEMPLATES_DIR', plugin_dir_path( __FILE__ ).'templates/' );
+define( 'PHONE_BOOK_PLUGIN_EXPORTS_DIR', plugin_dir_path( __FILE__ ).'exports/' );
 define( 'PHONE_BOOK_PLUGIN_BASE_NAME', plugin_basename( __FILE__ ) );
 define( 'PHONE_BOOK_PLUGIN_FILE', basename( __FILE__ ) );
 define( 'PHONE_BOOK_PLUGIN_SLUG', substr( basename( __FILE__ ), 0, strrpos( basename( __FILE__ ), '.' ) ) );

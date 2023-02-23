@@ -98,8 +98,16 @@ if ( ! class_exists( '\\Phone_Book\\Classes\\Database' ) ) {
 					$args = ! empty( $args[$date] ) ? $this->parse_date_for_db_query( $args[$date], $date, $args ) : $args;
 				}
 			}
+			
+			// select
+			if ( ! empty( $args['select'] ) ) {
+				$select = esc_attr( $args['select'] );
+				unset( $args['select'] );
+			} else {
+				$select = '*';
+			}
 
-			$sql         = "SELECT * FROM {$this->table_name}";
+			$sql         = "SELECT {$select} FROM {$this->table_name}";
 			$sql_params  = [];
 			$c           = 0;
 			$next_clause = 'WHERE';

@@ -18,6 +18,6 @@
 	"require": {
 		"eighteen73/settings-api": "dev-main",
 		"megastruktur/phone-country-codes": "^0.4.0",
-		"alexmigf/forma": "^0.01.0"	
+		"alexmigf/forma": "^0.01.0"
 	}
 }

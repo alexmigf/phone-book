@@ -101,45 +101,48 @@ if ( ! class_exists( '\\Phone_Book\\Classes\\ContactsList' ) ) {
 		}
 		
 		public function process_bulk_action() {
-			// edit and delete
+			// TODO: bulk edit and delete
 		}
 
 		public function prepare_items() {
-			$user			= get_current_user_id();
-			$screen			= get_current_screen();
-			$screen_option	= $screen->get_option( 'per_page', 'option' );
-			if ( is_string( $screen_option ) ) {
-				$per_page = get_user_meta( $user, $screen_option, true );
-				if ( empty ( $per_page) || intval( $per_page ) < 1 ) {
-					$per_page = $screen->get_option( 'per_page', 'default' );
-				}
-			} else {
-				$per_page = 20;
-			}
-
-			$columns		= $this->get_columns();
-			$hidden			= [];
-			$sortable		= $this->get_sortable_columns();
-			$current_page 	= $this->get_pagenum();
+			$settings     = Phone_Book()->settings->get_data();
+			$per_page     = ! empty( $settings['results_per_page'] ) ? intval( $settings['results_per_page'] ) : 20;
+			$search       = ! empty( $_GET['s'] ) ? esc_attr( $_GET['s'] ) : false;
+			$search_types = [ 'first_name', 'last_name', 'company', 'email', 'phone' ];
+			$columns      = $this->get_columns();
+			$hidden       = [];
+			$sortable     = $this->get_sortable_columns();
+			$current_page = $this->get_pagenum();
 			
 			$this->_column_headers = [ $columns, $hidden, $sortable ];
 
 			$this->process_bulk_action();
-		
-			$args = array (
+			
+			$args = [
 				'limit'    => $per_page,
 				'offset'   => $per_page * ( $current_page - 1 ),
 				'order_by' => 'date_created',
 				'order'    => 'DESC',
-			);
+			];
+			
+			if ( ! empty( $search ) ) {
+				foreach ( $search_types as $type ) {
+					if ( strpos( $search, "{$type}:" ) !== false ) {
+						$args[$type] = trim( str_replace( "{$type}:", '', $search ) );
+					}
+				}
+			}
 			
 			$this->items = Phone_Book()->contacts->database->get_entries( $args );
+			unset( $args['limit'] );
+			unset( $args['offset'] );
+			$total_items = Phone_Book()->contacts->database->get_entries( $args );
 			
 			$this->set_pagination_args(
 				[
-					'total_items' => count( $this->items ),
+					'total_items' => count( $total_items ),
 					'per_page'    => $per_page,
-					'total_pages' => ceil( count( $this->items ) / $per_page ),
+					'total_pages' => ceil( count( $total_items ) / $per_page ),
 				]
 			);
 		}
