@@ -1,0 +1,23 @@
+{
+	"autoload": {
+		"psr-4": {
+			"Phone_Book\\": [
+				"includes/"
+			]
+		},
+		"classmap": [
+			"includes/"
+		]
+	},
+	"repositories": [
+        {
+            "type": "git",
+            "url": "https://github.com/alexmigf/settings-api.git"
+        }
+    ],
+	"require": {
+		"eighteen73/settings-api": "dev-main",
+		"megastruktur/phone-country-codes": "^0.4.0",
+		"alexmigf/forma": "^0.01.0"
+	}
+}

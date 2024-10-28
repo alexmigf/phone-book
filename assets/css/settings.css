@@ -1,0 +1,16 @@
+.phone-book-wrap.submenu-page {
+	display: none;
+}
+
+.phone-book-wrap.admin-page table.contacts td.column-actions {
+	text-align: right;
+}
+
+.phone-book-wrap.admin-page table.contacts td.column-actions .edit {
+	margin-right: 10px;
+}
+
+.phone-book_settings-wrap .phone-book-nav,
+.phone-book_settings-wrap #phone-book-settings form > h2 {
+	display: none;
+}

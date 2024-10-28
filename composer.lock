@@ -1,0 +1,147 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "32856995a6bfc074706f6e4aa8a92803",
+    "packages": [
+        {
+            "name": "alexmigf/forma",
+            "version": "0.01",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/alexmigf/forma.git",
+                "reference": "b31fdad96b79e4ec842c5d0b17fcb283fa416c0a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/alexmigf/forma/zipball/b31fdad96b79e4ec842c5d0b17fcb283fa416c0a",
+                "reference": "b31fdad96b79e4ec842c5d0b17fcb283fa416c0a",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Alexmigf\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Alexandre Faustino",
+                    "email": "alexmigf@gmail.com"
+                }
+            ],
+            "description": "WordPress Admin simple form API package",
+            "homepage": "https://github.com/alexmigf/forma",
+            "keywords": [
+                "api",
+                "form",
+                "wordpress"
+            ],
+            "support": {
+                "issues": "https://github.com/alexmigf/forma/issues",
+                "source": "https://github.com/alexmigf/forma/tree/0.01"
+            },
+            "time": "2022-12-30T19:42:06+00:00"
+        },
+        {
+            "name": "eighteen73/settings-api",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/alexmigf/settings-api.git",
+                "reference": "33ac55998ec8928f661a293e7da40183710f149d"
+            },
+            "require": {
+                "php": ">=7.4"
+            },
+            "require-dev": {
+                "eighteen73/phpcs-composer": "^1.0.0"
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Eighteen73\\SettingsApi\\": "includes/classes/"
+                }
+            },
+            "scripts": {
+                "test": [
+                    "phpcs"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "description": "A helper class for registering WordPress settings pages with a simpler API.",
+            "time": "2023-01-05T19:19:11+00:00"
+        },
+        {
+            "name": "megastruktur/phone-country-codes",
+            "version": "0.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/megastruktur/phone-country-codes.git",
+                "reference": "9d396143a73b08c0109053cf0c1cccdf8f78cfc1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/megastruktur/phone-country-codes/zipball/9d396143a73b08c0109053cf0c1cccdf8f78cfc1",
+                "reference": "9d396143a73b08c0109053cf0c1cccdf8f78cfc1",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "4.0.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "megastruktur\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Peter Varaksin",
+                    "email": "astromortis@gmail.com"
+                }
+            ],
+            "description": "A simple library to get phone country codes.",
+            "homepage": "http://github.com/megastruktur/phone-country-codes",
+            "keywords": [
+                "country",
+                "phone"
+            ],
+            "support": {
+                "issues": "https://github.com/megastruktur/phone-country-codes/issues",
+                "source": "https://github.com/megastruktur/phone-country-codes/tree/master"
+            },
+            "time": "2017-10-14T23:18:01+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": {
+        "eighteen73/settings-api": 20
+    },
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": [],
+    "plugin-api-version": "2.2.0"
+}

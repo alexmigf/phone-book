@@ -1,0 +1,18 @@
+.alexmigf\/forma\/form .field-wrapper,
+.alexmigf\/forma\/form #submit-wrapper {
+	margin: 20px 0;
+}
+
+.alexmigf\/forma\/form .field-wrapper  label {
+	width: 200px;
+	display: inline-block;
+	vertical-align: top;
+	padding-top: 5px;
+}
+
+.alexmigf\/forma\/form .field-wrapper input,
+.alexmigf\/forma\/form .field-wrapper select,
+.alexmigf\/forma\/form .field-wrapper textarea {
+	width: 350px;
+	margin-right: 10px;
+}
